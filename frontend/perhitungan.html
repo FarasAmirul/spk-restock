@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Perhitungan SAW - SPK Restock</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">SPK SAW</div>
+    <ul class="nav-menu">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="barang.html">Data Barang</a></li>
+      <li><a href="kriteria.html">Data Kriteria</a></li>
+      <li><a href="penilaian.html">Penilaian</a></li>
+      <li><a href="perhitungan.html" class="active">Perhitungan SAW</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="container">
+    <h1>Perhitungan Metode SAW</h1>
+
+    <!-- BUTTON -->
+    <div class="card center">
+  <button id="btnHitung" class="btn-primary btn-large">
+    ▶ Proses Perhitungan SAW
+  </button>
+</div>
+
+
+    <!-- HASIL PERHITUNGAN -->
+    <div class="card">
+
+      <!-- TABEL NORMALISASI (WAJIB SECARA METODE) -->
+      <h3>Tabel Normalisasi</h3>
+      <table border="1" width="100%" cellpadding="8">
+        <thead>
+          <tr>
+            <th>Barang</th>
+            <th>C1 (Stok)</th>
+            <th>C2 (Penjualan)</th>
+            <th>C3 (Lead Time)</th>
+            <th>C4 (Harga)</th>
+          </tr>
+        </thead>
+        <tbody id="tabelNormalisasi">
+          <!-- Diisi oleh JS -->
+        </tbody>
+      </table>
+
+      <br>
+
+      <!-- TABEL HASIL RANKING -->
+      <h3>Hasil Perankingan SAW</h3>
+      <table border="1" width="100%" cellpadding="8">
+        <thead>
+          <tr>
+            <th>Ranking</th>
+            <th>Nama Barang</th>
+            <th>Nilai Preferensi</th>
+          </tr>
+        </thead>
+        <tbody id="tabelHasil">
+          <!-- Diisi oleh JS -->
+        </tbody>
+      </table>
+
+    </div>
+  </main>
+  <script>
+  if (!localStorage.getItem("token")) {
+    window.location.href = "login.html"
+  }
+</script>
+
+
+  <!-- SCRIPT (WAJIB MODULE) -->
+  <script type="module" src="js/saw.js"></script>
+
+</body>
+</html>

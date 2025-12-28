@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>SPK Restock Barang - Metode SAW</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="logo">SPK SAW</div>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="active">Dashboard</a></li>
+      <li><a href="barang.html">Data Barang</a></li>
+      <li><a href="kriteria.html">Data Kriteria</a></li>
+      <li><a href="penilaian.html">Penilaian</a></li>
+      <li><a href="perhitungan.html">Perhitungan SAW</a></li>
+    </ul>
+  </nav>
+
+  <!-- ================= CONTENT ================= -->
+  <main class="container">
+    <div class="page-header">
+      <h1>Sistem Pendukung Keputusan Restock Barang</h1>
+      <p class="subtitle">
+        Menggunakan Metode <strong>Simple Additive Weighting (SAW)</strong>
+      </p>
+    </div>
+
+    <div class="card-container">
+
+      <div class="card">
+        <h3>Data Barang</h3>
+        <p>Kelola alternatif barang yang akan dianalisis.</p>
+        <a href="barang.html" class="btn-link">Kelola</a>
+      </div>
+
+      <div class="card">
+        <h3>Data Kriteria</h3>
+        <p>Atur kriteria dan bobot penilaian.</p>
+        <a href="kriteria.html" class="btn-link">Kelola</a>
+      </div>
+
+      <div class="card">
+        <h3>Penilaian</h3>
+        <p>Nilai setiap barang berdasarkan kriteria.</p>
+        <a href="penilaian.html" class="btn-link">Isi Nilai</a>
+      </div>
+
+      <div class="card">
+        <h3>Perhitungan SAW</h3>
+        <p>Lihat hasil ranking rekomendasi restock.</p>
+        <a href="perhitungan.html" class="btn-link">Proses</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>© 2025 | SPK Restock Barang — Metode SAW</p>
+  </footer>
+
+  <!-- ================= AUTH CHECK ================= -->
+  <script>
+    if (!localStorage.getItem("token")) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

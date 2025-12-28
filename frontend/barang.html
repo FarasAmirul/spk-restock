@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Barang - SPK SAW</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="logo">SPK SAW</div>
+    <ul class="nav-menu">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="barang.html" class="active">Data Barang</a></li>
+      <li><a href="kriteria.html">Data Kriteria</a></li>
+      <li><a href="penilaian.html">Penilaian</a></li>
+      <li><a href="perhitungan.html">Perhitungan SAW</a></li>
+    </ul>
+  </nav>
+
+  <!-- ================= CONTENT ================= -->
+  <main class="container">
+
+    <div class="page-header">
+      <h1>Data Barang</h1>
+      <p class="subtitle">Kelola data barang sebagai alternatif keputusan</p>
+    </div>
+
+    <!-- ================= FORM TAMBAH BARANG ================= -->
+    <div class="card">
+      <h3>Tambah Barang</h3>
+
+      <form id="formBarang" class="form-grid">
+        <input type="text" id="nama" placeholder="Nama Barang" required>
+        <input type="number" id="stok" placeholder="Stok" required>
+        <input type="number" id="penjualan" placeholder="Penjualan" required>
+        <input type="number" id="lead_time" placeholder="Lead Time (hari)" required>
+        <input type="number" id="harga" placeholder="Harga (Rp)" required>
+
+        <div class="form-action">
+          <button type="submit" class="btn-primary">Simpan</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ================= TABEL BARANG ================= -->
+    <div class="card">
+      <h3>Daftar Barang</h3>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Barang</th>
+              <th>Stok</th>
+              <th>Penjualan</th>
+              <th>Lead Time</th>
+              <th>Harga</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tabelBarang">
+            <!-- data dari API -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= AUTH CHECK ================= -->
+  <script>
+    if (!localStorage.getItem("token")) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <script type="module" src="js/barang.js"></script>
+
+</body>
+</html>
