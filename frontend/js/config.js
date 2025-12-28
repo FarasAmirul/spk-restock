@@ -1,1 +1,1 @@
-export const BASE_URL = "https://spk-restock-production.up.railway.app";
+export const BASE_URL = "https://spk-restock-production.up.railway.app/api";
