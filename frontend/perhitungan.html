@@ -16,6 +16,8 @@
       <li><a href="kriteria.html">Data Kriteria</a></li>
       <li><a href="penilaian.html">Penilaian</a></li>
       <li><a href="perhitungan.html" class="active">Perhitungan SAW</a></li>
+      <li><a href="#" id="btnLogout">Logout</a></li>
+
     </ul>
   </nav>
 
@@ -79,6 +81,15 @@
 
   <!-- SCRIPT (WAJIB MODULE) -->
   <script type="module" src="js/saw.js"></script>
+  <script type="module">
+  import { logout } from "./js/logout.js"
+
+  const btnLogout = document.getElementById("btnLogout")
+  if (btnLogout) {
+    btnLogout.addEventListener("click", logout)
+  }
+</script>
+
 
 </body>
 </html>

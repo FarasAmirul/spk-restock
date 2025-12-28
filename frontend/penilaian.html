@@ -16,6 +16,8 @@
       <li><a href="kriteria.html">Data Kriteria</a></li>
       <li><a href="penilaian.html" class="active">Penilaian</a></li>
       <li><a href="perhitungan.html">Perhitungan SAW</a></li>
+      <li><a href="#" id="btnLogout">Logout</a></li>
+
     </ul>
   </nav>
 
@@ -55,5 +57,14 @@
 </script>
 
 <script type="module" src="js/penilaian.js"></script>
+<script type="module">
+  import { logout } from "./js/logout.js"
+
+  const btnLogout = document.getElementById("btnLogout")
+  if (btnLogout) {
+    btnLogout.addEventListener("click", logout)
+  }
+</script>
+
 </body>
 </html>
