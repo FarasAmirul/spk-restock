@@ -1,4 +1,5 @@
 import { BASE_URL } from "./config.js";
+
 const tabelKriteria = document.getElementById("tabelKriteria");
 const formKriteria = document.getElementById("formKriteria");
 
@@ -7,6 +8,7 @@ function loadKriteria() {
     .then(res => res.json())
     .then(data => {
       tabelKriteria.innerHTML = "";
+
       data.forEach((k, i) => {
         tabelKriteria.innerHTML += `
           <tr>
@@ -16,13 +18,19 @@ function loadKriteria() {
             <td>${k.bobot}</td>
             <td>${k.atribut}</td>
             <td>
-              <button class="btn-danger" onclick="hapusKriteria(${k.id})">
-  Hapus
-</button>
-
+              <button class="btn-danger" data-id="${k.id}">
+                Hapus
+              </button>
             </td>
           </tr>
         `;
+      });
+
+      // 🔴 EVENT HAPUS
+      document.querySelectorAll(".btn-danger").forEach(btn => {
+        btn.addEventListener("click", () => {
+          hapusKriteria(btn.dataset.id);
+        });
       });
     });
 }
@@ -48,9 +56,11 @@ formKriteria.addEventListener("submit", e => {
 });
 
 function hapusKriteria(id) {
-  if (!confirm("Hapus kriteria?")) return;
-  fetch(`${BASE_URL}/kriteria/${id}`, { method: "DELETE" })
-    .then(() => loadKriteria());
+  if (!confirm("Hapus kriteria ini?")) return;
+
+  fetch(`${BASE_URL}/kriteria/${id}`, {
+    method: "DELETE"
+  }).then(() => loadKriteria());
 }
 
 loadKriteria();

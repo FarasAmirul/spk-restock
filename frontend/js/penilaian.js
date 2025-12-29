@@ -1,4 +1,5 @@
 import { BASE_URL } from "./config.js";
+
 function loadBarang() {
   fetch(`${BASE_URL}/barang`)
     .then(res => res.json())
@@ -26,6 +27,7 @@ function loadNilai() {
     .then(res => res.json())
     .then(data => {
       tabelPenilaian.innerHTML = "";
+
       data.forEach((n, i) => {
         tabelPenilaian.innerHTML += `
           <tr>
@@ -34,13 +36,19 @@ function loadNilai() {
             <td>${n.nama_kriteria}</td>
             <td>${n.nilai}</td>
             <td>
-              <button class="btn-danger" onclick="hapusNilai(${n.id})">
-  Hapus
-</button>
-
+              <button class="btn-danger" data-id="${n.id}">
+                Hapus
+              </button>
             </td>
           </tr>
         `;
+      });
+
+      // 🔴 EVENT HAPUS
+      document.querySelectorAll(".btn-danger").forEach(btn => {
+        btn.addEventListener("click", () => {
+          hapusNilai(btn.dataset.id);
+        });
       });
     });
 }
@@ -65,8 +73,11 @@ formPenilaian.addEventListener("submit", e => {
 });
 
 function hapusNilai(id) {
-  fetch(`${BASE_URL}/nilai/${id}`, { method: "DELETE" })
-    .then(() => loadNilai());
+  if (!confirm("Hapus nilai ini?")) return;
+
+  fetch(`${BASE_URL}/nilai/${id}`, {
+    method: "DELETE"
+  }).then(() => loadNilai());
 }
 
 loadBarang();

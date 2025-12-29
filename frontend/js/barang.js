@@ -1,4 +1,5 @@
 import { BASE_URL } from "./config.js";
+
 const tabelBarang = document.getElementById("tabelBarang");
 const formBarang = document.getElementById("formBarang");
 
@@ -7,6 +8,7 @@ function loadBarang() {
     .then(res => res.json())
     .then(data => {
       tabelBarang.innerHTML = "";
+
       data.forEach((b, i) => {
         tabelBarang.innerHTML += `
           <tr>
@@ -17,13 +19,22 @@ function loadBarang() {
             <td>${b.lead_time}</td>
             <td>${b.harga}</td>
             <td>
-  <button class="btn-danger" onclick="hapusBarang(${b.id})">
-    Hapus
-  </button>
-</td>
-
+              <button 
+                class="btn-danger" 
+                data-id="${b.id}">
+                Hapus
+              </button>
+            </td>
           </tr>
         `;
+      });
+
+      // 🔴 PASANG EVENT SETELAH HTML TERBENTUK
+      document.querySelectorAll(".btn-danger").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.id;
+          hapusBarang(id);
+        });
       });
     });
 }
@@ -51,8 +62,10 @@ formBarang.addEventListener("submit", e => {
 
 function hapusBarang(id) {
   if (!confirm("Hapus barang ini?")) return;
-  fetch(`${BASE_URL}/barang/${id}`, { method: "DELETE" })
-    .then(() => loadBarang());
+
+  fetch(`${BASE_URL}/barang/${id}`, {
+    method: "DELETE"
+  }).then(() => loadBarang());
 }
 
 loadBarang();
